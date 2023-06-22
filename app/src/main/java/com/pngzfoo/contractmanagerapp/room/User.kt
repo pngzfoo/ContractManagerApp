@@ -11,8 +11,8 @@ data class User(
     val id:Int,
 
     @ColumnInfo(name = "user_name")
-    val name:String,
+    var name:String,
 
     @ColumnInfo(name = "email_name")
-    val email:String
+    var email:String
 )

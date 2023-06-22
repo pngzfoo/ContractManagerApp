@@ -34,18 +34,34 @@ class UserViewModel(private val repository:UserRepository):ViewModel(),Observabl
     }
 
     fun saveOrUpdate(){
-        val name = inputName.value!!
-        val email = inputEmail.value!!
 
-        insert(User(0,name,email))
+        if(isUpdateOrDelete){
+            //update
+            userToUpdateOrDelete.name = inputName.value!!
+            userToUpdateOrDelete.email = inputEmail.value!!
+            update(userToUpdateOrDelete)
 
-        inputName.value = null
-        inputEmail.value = null
+        }else{
+            //insert functionality
+            val name = inputName.value!!
+            val email = inputEmail.value!!
+
+            insert(User(0,name,email))
+
+            inputName.value = null
+            inputEmail.value = null
+        }
+
 
     }
 
     fun clearAllOrDelete(){
-        clearAll()
+        if(isUpdateOrDelete){
+            delete(userToUpdateOrDelete)
+        }else{
+            clearAll()
+        }
+
     }
 
     fun insert(user:User) = viewModelScope.launch {
@@ -58,10 +74,32 @@ class UserViewModel(private val repository:UserRepository):ViewModel(),Observabl
 
     fun update(user:User) = viewModelScope.launch {
         repository.update(user)
+
+        //reset button and fields
+        inputName.value = null
+        inputEmail.value = null
+        isUpdateOrDelete = false
+        saveOrUpdateButtonText.value = "Save"
+        clearAllOrDeleteButtonText.value = "Clear All"
     }
 
     fun delete(user:User) = viewModelScope.launch {
         repository.delete(user)
+
+        //reset button and fields
+        inputName.value = null
+        inputEmail.value = null
+        isUpdateOrDelete = false
+        saveOrUpdateButtonText.value = "Save"
+        clearAllOrDeleteButtonText.value = "Clear All"
+    }
+
+    fun initUpdateAndDelete(user:User){
+        inputName.value = user.name
+        inputEmail.value = user.email
+        isUpdateOrDelete = true
+        saveOrUpdateButtonText.value = "Update"
+        clearAllOrDeleteButtonText.value = "Delete"
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
