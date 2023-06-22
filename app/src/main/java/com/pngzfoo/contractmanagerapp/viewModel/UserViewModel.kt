@@ -1,4 +1,4 @@
-package com.pngzfoo.contractmanagerapp.ViewModel
+package com.pngzfoo.contractmanagerapp.viewModel
 
 import androidx.databinding.Observable
 import androidx.databinding.Bindable
@@ -103,10 +103,10 @@ class UserViewModel(private val repository:UserRepository):ViewModel(),Observabl
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        TODO("Not yet implemented")
+
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        TODO("Not yet implemented")
+
     }
 }

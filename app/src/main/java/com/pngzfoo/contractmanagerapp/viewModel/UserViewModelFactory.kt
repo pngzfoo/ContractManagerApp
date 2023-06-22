@@ -1,8 +1,7 @@
-package com.pngzfoo.contractmanagerapp.ViewModel
+package com.pngzfoo.contractmanagerapp.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.pngzfoo.contractmanagerapp.room.UserRepository
 
 class UserViewModelFactory(private val repository : UserRepository):ViewModelProvider.Factory {

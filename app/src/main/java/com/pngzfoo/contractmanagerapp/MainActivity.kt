@@ -7,8 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pngzfoo.contractmanagerapp.ViewModel.UserViewModel
-import com.pngzfoo.contractmanagerapp.ViewModel.UserViewModelFactory
+import com.pngzfoo.contractmanagerapp.viewModel.UserViewModel
+import com.pngzfoo.contractmanagerapp.viewModel.UserViewModelFactory
 import com.pngzfoo.contractmanagerapp.databinding.ActivityMainBinding
 import com.pngzfoo.contractmanagerapp.room.User
 import com.pngzfoo.contractmanagerapp.room.UserDatabase
