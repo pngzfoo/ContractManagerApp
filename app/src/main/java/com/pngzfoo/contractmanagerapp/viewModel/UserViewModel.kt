@@ -98,6 +98,7 @@ class UserViewModel(private val repository:UserRepository):ViewModel(),Observabl
         inputName.value = user.name
         inputEmail.value = user.email
         isUpdateOrDelete = true
+        userToUpdateOrDelete = user
         saveOrUpdateButtonText.value = "Update"
         clearAllOrDeleteButtonText.value = "Delete"
     }
